@@ -44,11 +44,13 @@ Once you have a benchfile you can run the index.js as an executable with these c
     -d, --debug       Debug mode keeps run information in output [false]
     -r, --runs [int]  How many runs to perform [10]
 
-If you are in a directory with a benchfile.json you don't need to include it. Command line options over-ride benchfile options.
+**Notes**
+- If you are in a directory with a benchfile.json you don't need to include it. 
+- Command line options override benchfile options.
 
 ### Results
 
-For now output is JSON in this struct:
+For now output is JSON of this structure:
 
 ```json
 {
@@ -72,4 +74,8 @@ For now output is JSON in this struct:
 }
 ```
 
-Take a look at the output from benchmarking a [simple palindrome finding program](https://github.com/montanaflynn/palindromes) in different languages and think about the possibilities. I'd like to see charts, outliers, sorting, csv, etc...
+Take a look at the output from benchmarking a [simple palindrome finding program](https://github.com/montanaflynn/palindromes) in different languages. 
+
+### Todos
+
+I'd like to see charts, outliers, sorting, csv, etc...
