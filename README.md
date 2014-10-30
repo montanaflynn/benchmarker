@@ -101,7 +101,7 @@ For now output is JSON of this structure:
 
 - The debug flag adds includes the runs object.
 
-Take a look at the output from benchmarking a [simple palindrome finding program](https://github.com/montanaflynn/palindromes) in different languages. 
+[Example output](https://github.com/montanaflynn/palindromes#more-advanced-benchmarks) from benchmarking a simple palindrome finding program in different languages. 
 
 ### Todos
 
