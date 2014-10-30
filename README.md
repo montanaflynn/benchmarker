@@ -100,8 +100,8 @@ For now output is JSON of this structure:
 **Notes**
 
 - The debug flag adds includes the runs object.
-
-[Example output](https://github.com/montanaflynn/palindromes#more-advanced-benchmarks) from benchmarking a simple palindrome finding program in different languages. 
+- Benchmarks are sorted by performance.
+- [Example output](https://github.com/montanaflynn/palindromes#more-advanced-benchmarks) from palindrome finding program written in different languages. 
 
 ### Todos
 
