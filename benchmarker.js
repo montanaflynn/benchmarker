@@ -22,6 +22,7 @@ module.exports = function(files, options) {
       length: length,
       runs: [],
       results: {
+        runs: options.runs,
         success: {},
         error: {}
       }
