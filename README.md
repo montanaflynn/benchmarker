@@ -23,7 +23,7 @@ Create a `benchmark.json` file with an array of objects representing the softwar
 
 ### Results
 
-Here's the output from benchmarking a [simple palindrome finding program](https://github.com/montanaflynn/palindromes) in many different languages:
+Here's the output from benchmarking a [simple palindrome finding program](https://github.com/montanaflynn/palindromes) in different languages:
 
 	{
 	  "C": {
