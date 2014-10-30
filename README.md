@@ -50,6 +50,7 @@ If you are in a directory with a benchfile.json you don't need to include it. Co
 
 For now output is JSON in this struct:
 
+```json
 {
     "name" : {
         "runs": 100,
@@ -58,8 +59,8 @@ For now output is JSON in this struct:
         "min": 32,
         "max": 55,
         "total": 3391,
-        "average": "33.91",
-        "stdDev": "2.70",
+        "average": 33.91,
+        "stdDev": 2.70,
         "percentile": {
           "95th": 38,
           "75th": 34,
@@ -69,6 +70,6 @@ For now output is JSON in this struct:
         }
     }
 }
-
+```
 
 Take a look at the output from benchmarking a [simple palindrome finding program](https://github.com/montanaflynn/palindromes) in different languages and think about the possibilities. I'd like to see charts, outliers, sorting, csv, etc...
