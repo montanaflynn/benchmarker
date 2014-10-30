@@ -1,6 +1,6 @@
-# Benchmarker (Unstable)
+# Benchmarker (experimental)
 
-An experimental benchmarker with it's own configuration file format which uses nodejs to run software and collect performance metrics. 
+A benchmarking tool with it's own configuration file. 
 
 ### Usage
 
@@ -105,4 +105,4 @@ Take a look at the output from benchmarking a [simple palindrome finding program
 
 ### Todos
 
-I'd like to see charts, outliers, sorting, csv, etc...
+I'd like to see charts, outliers, sorting, csv, plugins, etc...
