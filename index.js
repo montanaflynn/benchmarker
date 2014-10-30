@@ -12,7 +12,7 @@ program
   .parse(process.argv)
 
 var arg = program.args[0]
-var file = arg ? process.cwd() + "/" + arg : process.cwd() + "/Benchfile.json"
+var file = arg ? process.cwd() + "/" + arg : process.cwd() + "/benchmark.json"
 
 try {
   var file = require(file)
