@@ -59,39 +59,41 @@ For now output is JSON of this structure:
         "debug": true,
         "unit": "ms"
     },
-    "benchmarks": {
-        "name": "Rust",
-        "success": 100,
-        "error": 0,
-        "runs": [
-            {
-                "exit": 0,
-                "time": 32,
-                "inputlines": 44,
-                "inputlength": 2349,
-                "stdout": "yay it worked",
-                "stdoutlines": 1,
-                "stdoutlength": 13,
-                "stderr": false,
-                "stderrlines": false,
-                "stderrlength": false
-            }
-        ],
-        "results": {
-            "min": 32,
-            "max": 55,
-            "total": 3391,
-            "average": 33.91,
-            "stdDev": 2.7,
-            "percentile": {
-                "95th": 38,
-                "75th": 34,
-                "50th": 33,
-                "25th": 32,
-                "5th": 33
+    "benchmarks": [
+        {    
+            "name": "Rust",
+            "success": 100,
+            "error": 0,
+            "runs": [
+                {
+                    "exit": 0,
+                    "time": 32,
+                    "inputlines": 44,
+                    "inputlength": 2349,
+                    "stdout": "yay it worked",
+                    "stdoutlines": 1,
+                    "stdoutlength": 13,
+                    "stderr": false,
+                    "stderrlines": false,
+                    "stderrlength": false
+                }
+            ],
+            "results": {
+                "min": 32,
+                "max": 55,
+                "total": 3391,
+                "average": 33.91,
+                "stdDev": 2.7,
+                "percentile": {
+                    "95th": 38,
+                    "75th": 34,
+                    "50th": 33,
+                    "25th": 32,
+                    "5th": 33
+                }
             }
         }
-    }
+    ]
 }
 ```
 
