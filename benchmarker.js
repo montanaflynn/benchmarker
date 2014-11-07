@@ -12,14 +12,9 @@ module.exports = function(files, options) {
     var file = files[i]
     var language = file.language
     var command = file.command
-    var content = file.content
-    var length = content.length
-    var lines = (content.split("\n").length - 1)
     list.push(language)
     data[language] = {
       execute:  command,
-      lines: lines,
-      length: length,
       runs: [],
       results: {
         runs: options.runs,

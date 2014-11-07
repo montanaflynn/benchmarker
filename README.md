@@ -60,7 +60,7 @@ For now output is JSON of this structure:
         "unit": "ms"
     },
     "benchmarks": [
-        {    
+        {
             "name": "Rust",
             "success": 100,
             "error": 0,
@@ -68,14 +68,12 @@ For now output is JSON of this structure:
                 {
                     "exit": 0,
                     "time": 32,
-                    "inputlines": 44,
-                    "inputlength": 2349,
                     "stdout": "yay it worked",
                     "stdoutlines": 1,
                     "stdoutlength": 13,
-                    "stderr": false,
-                    "stderrlines": false,
-                    "stderrlength": false
+                    "stderr": null,
+                    "stderrlines": null,
+                    "stderrlength": null
                 }
             ],
             "results": {
