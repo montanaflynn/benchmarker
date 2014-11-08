@@ -17,7 +17,7 @@ module.exports = function(files, options) {
       execute:  command,
       runs: [],
       results: {
-        runs: options.runs,
+        runs: parseInt(options.runs),
         success: {},
         error: {}
       }
@@ -141,7 +141,7 @@ module.exports = function(files, options) {
       }, 0)
        
       // Get average
-      results.average = (results.total / runs.length).toFixed(2)
+      results.average = parseInt((results.total / runs.length).toFixed(2))
 
 
       // Get Standard deviation
@@ -158,7 +158,7 @@ module.exports = function(files, options) {
 
       var avgSquareDiff = average(squareDiffs)
 
-      results.stdDev = Math.sqrt(avgSquareDiff).toFixed(2)
+      results.stdDev = parseInt(Math.sqrt(avgSquareDiff).toFixed(2))
 
       // Get percentiles
       results.percentile = {
