@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/montanaflynn/benchmarker",
   "dependencies": {
-    "commander": "^2.5.0"
+    "commander": "^2.5.0",
+    "progress": "^1.1.8"
   }
 }

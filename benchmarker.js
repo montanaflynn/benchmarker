@@ -1,10 +1,13 @@
 var subshell = require('child_process')
-
+  
 module.exports = function(files, options) {
 
   // Option defaults
   options = options || {}
-  options.runs = options.runs || 10
+  options.runs = parseInt(options.runs) || 10
+
+  // Show progress or keep quiet
+  showProgress = (!options.verbose && !options.quiet) ? true : false
 
   // Build list of programs to test and data structure
   var list = [], data = {}
@@ -17,11 +20,24 @@ module.exports = function(files, options) {
       execute:  command,
       runs: [],
       results: {
-        runs: parseInt(options.runs),
+        runs: options.runs,
         success: {},
         error: {}
       }
     }
+  }
+
+  if (showProgress) {
+    // Show progress bar
+    var ProgressBar = require('progress')
+    var len = list.length * options.runs
+
+    var bar = new ProgressBar('  Benchmarking [:bar] :percent ', {
+      complete: '=',
+      incomplete: ' ',
+      width: 20,
+      total: len
+    });
   }
 
   // Run until done!
@@ -69,6 +85,10 @@ module.exports = function(files, options) {
             outputlines: (output.split("\n").length - 1),
             outputlength: output.length
           })
+
+          // Update progress bar
+          if (showProgress)
+            bar.tick(1)
 
           // On to the next run
           run(list, data)
@@ -201,9 +221,22 @@ module.exports = function(files, options) {
     return (1 - fract) * vals[int_part] + fract * vals[int_part + 1]
   }
 
-  // Tada!
+  // Wrap it up and ship it out
   function output(data) {
-    console.log(JSON.stringify(data,null,2))
+    var arr = [];
+
+    for (var item in data) {
+      arr.push({
+        name: item,
+        results: data[item].results
+      })
+    }
+
+    if (options.sort) {
+      arr.sort(function(a, b) {return a.results.total - b.results.total})
+    }
+
+    console.log(JSON.stringify(arr,null,2))
   } 
 
 } 
