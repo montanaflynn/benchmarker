@@ -1,0 +1,9 @@
+[
+	{
+		"name": "ls",
+		"command": "ls"
+	},{
+		"name": "ls all",
+		"command": "ls -a"
+	}
+]

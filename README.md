@@ -1,6 +1,15 @@
-# Benchmarker (experimental)
+# Benchmarker
 
-A benchmarking tool with it's own configuration file. 
+A benchmarking tool with it's own configuration file.  
+
+### Try it out
+
+```
+git clone git@github.com:montanaflynn/benchmarker.git
+cd benchmarker
+npm install
+./benchmarker -b example/Benchfile
+```
 
 ### Usage
 
