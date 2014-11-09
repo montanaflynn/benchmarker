@@ -72,7 +72,7 @@ module.exports = function(files, options) {
 
           // Be loud
           if (options.verbose){
-            var runNums = " run #" + item.runs.length
+            var runNums = " run #" + item.runs.length + 1
             var outcomeStr = " outcome: " + outcome + " ("+time+"ms)"
             console.log(language + runNums + outcomeStr)
           }
