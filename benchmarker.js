@@ -13,10 +13,10 @@ module.exports = function(files, options) {
   var list = [], data = {}
   for (var i = 0; i < files.length; i++) {
     var file = files[i]
-    var language = file.language
+    var name = file.name
     var command = file.command
-    list.push(language)
-    data[language] = {
+    list.push(name)
+    data[name] = {
       execute:  command,
       runs: [],
       results: {
@@ -50,11 +50,11 @@ module.exports = function(files, options) {
     // otherwise keep moving forward
     } else {
 
-      // Get the language data from the list
-      var language = list[0]
-      var item = data[language]
+      // Get the data from the list
+      var name = list[0]
+      var item = data[name]
 
-      // If we have no more runs to go for this language
+      // If we have no more runs to go move on
       if (item.runs.length == options.runs) {
         delete item.execute
         list.shift()
@@ -72,9 +72,9 @@ module.exports = function(files, options) {
 
           // Be loud
           if (options.verbose){
-            var runNums = " run #" + item.runs.length + 1
+            var runNums = " run #" + (item.runs.length + 1)
             var outcomeStr = " outcome: " + outcome + " ("+time+"ms)"
-            console.log(language + runNums + outcomeStr)
+            console.log(name + runNums + outcomeStr)
           }
 
           // Keep score
@@ -129,9 +129,9 @@ module.exports = function(files, options) {
   function analyze(data) {
 
     for (lang in data) {
-      var language = data[lang]
-      var runs = language.runs
-      var results = language.results
+      var name = data[lang]
+      var runs = name.runs
+      var results = name.results
 
       // Get errors
       results.error = runs.reduce(function(sum, run){
@@ -190,7 +190,7 @@ module.exports = function(files, options) {
       }
 
       if (!options.debug)
-        delete language.runs
+        delete name.runs
 
     }
 
