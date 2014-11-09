@@ -28,7 +28,8 @@ npm install
 __Protip:__ Use [jq](http://stedolan.github.io/jq/) to fine-tune the returned json data. Here's an example:
 
 ```shell
-benchmarker -qs -r 1 | jq '[.[] | {name: .name, total: .results.total}]'
+# Be sure to use --quiet or -q so benchmarker only outputs JSON
+benchmarker --quiet | jq '[.[] | {name: .name, total: .results.total}]'
 ```
 
 ## Readme Driven Development
