@@ -7,8 +7,7 @@ var options = {}
 
 program
   .version('0.1.0')
-  .command('benchmarker <benchfile>')
-  .description('Benchmark commands in a benchfile.json')
+  .command('benchmarker [benchfile]')
   .option('-q, --quiet', 'Quiet mode only shows results')
   .option('-v, --verbose', 'Verbose mode says what is happening')
   .option('-d, --debug', 'Debug mode keeps run information in output')
@@ -17,7 +16,7 @@ program
   .option('-r, --runs [int]', 'How many runs to perform', '10')
   .parse(process.argv)
 
-var arg = program.args[0]
+var arg = program.commands[0].args[0]
 var file = arg ? process.cwd() + "/" + arg : process.cwd() + "/benchmark.json"
 
 if (program.output === true) {
