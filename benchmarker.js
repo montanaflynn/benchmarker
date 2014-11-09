@@ -182,11 +182,11 @@ module.exports = function(files, options) {
 
       // Get percentiles
       results.percentile = {
-        "95th" : percentile(runs, .95),
+        "90th" : percentile(runs, .90),
         "75th" : percentile(runs, .75),
         "50th" : percentile(runs, .50),
         "25th" : percentile(runs, .25),
-        "5th" : percentile(runs, .5),
+        "10th" : percentile(runs, .10),
       }
 
       if (!options.debug)
