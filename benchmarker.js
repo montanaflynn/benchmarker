@@ -1,6 +1,6 @@
 var subshell = require('child_process')
   
-module.exports = function(files, options) {
+module.exports = function(files, options, callback) {
 
   // Option defaults
   options = options || {}
@@ -66,8 +66,6 @@ module.exports = function(files, options) {
         // Execute the program
         var command = item.execute
         execute(command, function(code, output, time){
-
-          console.log(output)
 
           // Wha happen?
           var outcome = code ? "error" : "success"
@@ -256,7 +254,8 @@ module.exports = function(files, options) {
       arr.sort(function(a, b) {return a.results.total - b.results.total})
     }
 
-    console.log(JSON.stringify(arr,null,2))
+    return callback(arr)
+
   } 
 
 } 
