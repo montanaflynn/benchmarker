@@ -1,6 +1,20 @@
 # Benchmarker
+## A benchmarking tool with it's own configuration file.  
 
-A benchmarking tool with it's own configuration file.  
+### Usage
+
+    Usage: benchmarker [options]
+
+    Options:
+
+    -h, --help              output usage information
+    -b, --benchfile [file]  Path to a Benchfile otherwise uses ./Benchfile
+    -q, --quiet             Quiet mode only shows results
+    -v, --verbose           Verbose mode says what is happening
+    -d, --debug             Debug mode keeps run information in output
+    -s, --sort              Sort mode sorts results by fastest total time
+    -o, --output [file]     Save results to output file
+    -r, --runs [int]        How many runs to perform
 
 ### Try it out
 
@@ -11,7 +25,8 @@ npm install
 ./benchmarker -b example/Benchfile
 ```
 
-### Usage
+## Readme Driven Development
+### Thar be dragons below; things may not work or be accurate.
 
 Create a `benchmark.json` file with an array of objects representing the software you want to benchmark. Each object must have a name and path with an optional command. You can also send options in an options object.
 
@@ -40,22 +55,6 @@ Create a `benchmark.json` file with an array of objects representing the softwar
     ]
 }
 ```
-
-Once you have a benchfile you can run the index.js as an executable with these commands:
-
-    Usage: ./index [./benchfile.json] [options]
-
-    Options:
-
-    -h, --help        output usage information
-    -V, --version     output the version number
-    -v, --verbose     Verbose mode says what is happening [false]
-    -d, --debug       Debug mode keeps run information in output [false]
-    -r, --runs [int]  How many runs to perform [10]
-
-**Notes**
-- If you are in a directory with a benchfile.json you don't need to include it. 
-- Command line options override benchfile options.
 
 ### Results
 
@@ -103,12 +102,6 @@ For now output is JSON of this structure:
     ]
 }
 ```
-
-**Notes**
-
-- The debug flag adds includes the runs object.
-- Benchmarks are sorted by performance.
-- [Example output](https://github.com/montanaflynn/palindromes#more-advanced-benchmarks) from palindrome finding program written in different languages. 
 
 ### Todos
 
