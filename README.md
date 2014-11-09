@@ -3,18 +3,21 @@
 
 ### Usage
 
+```
     Usage: benchmarker [options]
 
     Options:
 
-    -h, --help              output usage information
-    -b, --benchfile [file]  Path to a Benchfile otherwise uses ./Benchfile
-    -q, --quiet             Quiet mode only shows results
-    -v, --verbose           Verbose mode says what is happening
-    -d, --debug             Debug mode keeps run information in output
-    -s, --sort              Sort mode sorts results by fastest total time
-    -o, --output [file]     Save results to output file
-    -r, --runs [int]        How many runs to perform
+      -h, --help                        output usage information
+      -b, --benchfile [file]            path to a Benchfile
+      -q, --quiet                       quiet mode only shows results
+      -v, --verbose                     verbose mode says what is happening
+      -d, --debug                       debug mode keeps run information in output
+      -s, --sort                        sort mode sorts results by fastest total time
+      -f, --format [json|csv|tsv|xml]   specify the output format
+      -o, --output [file]               save results to output file
+      -r, --runs [int]                  how many runs to perform
+```
 
 ### Try it out
 

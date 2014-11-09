@@ -7,14 +7,14 @@ var benchmarker = require('./index.js')
 var options = {}
 
 program
-  .option('-b, --benchfile [file]', 'Path to a Benchfile')
-  .option('-q, --quiet', 'Quiet mode only shows results')
-  .option('-v, --verbose', 'Verbose mode says what is happening')
-  .option('-d, --debug', 'Debug mode keeps run information in output')
-  .option('-s, --sort', 'Sort mode sorts results by fastest total time')
-  .option('-f, --format [json|csv|xml]', 'Specify the output format', 'json')
-  .option('-o, --output [file]', 'Save results to output file')
-  .option('-r, --runs [int]', 'How many runs to perform', '10')
+  .option('-b, --benchfile [file]', 'path to a Benchfile')
+  .option('-q, --quiet', 'quiet mode only shows results')
+  .option('-v, --verbose', 'verbose mode says what is happening')
+  .option('-d, --debug', 'debug mode keeps run information in output')
+  .option('-s, --sort', 'sort mode sorts results by fastest total time')
+  .option('-f, --format [json|csv|tsv|xml]', 'specify the output format', 'json')
+  .option('-o, --output [file]', 'save results to output file')
+  .option('-r, --runs [int]', 'how many runs to perform', '10')
   .parse(process.argv)
 
 var file = program.benchfile
