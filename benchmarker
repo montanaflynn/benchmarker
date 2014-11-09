@@ -38,6 +38,7 @@ options.quiet = program.quiet || false
 options.verbose = program.verbose || false
 options.debug = program.debug || false
 options.sort = program.sort || false
+options.runs = program.runs || 10
 
 if (options.verbose) {
   console.log("Benchmarking with the following options")
