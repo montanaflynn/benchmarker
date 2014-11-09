@@ -18,11 +18,17 @@
 
 ### Try it out
 
-```
+```shell
 git clone git@github.com:montanaflynn/benchmarker.git
 cd benchmarker
 npm install
 ./benchmarker -b example/Benchfile
+```
+
+__Protip:__ Use [jq](http://stedolan.github.io/jq/) to fine-tune the returned json data. Here's an example:
+
+```shell
+benchmarker -qs -r 1 | jq '[.[] | {name: .name, total: .results.total}]'
 ```
 
 ## Readme Driven Development
