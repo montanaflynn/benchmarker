@@ -6,8 +6,7 @@ var benchmarker = require('./benchmarker.js')
 var options = {}
 
 program
-  .version('0.1.0')
-  .command('benchmarker [benchfile]')
+  .option('-b, --benchfile [file]', 'Benchfile to use otherwise use `./benchmark.json`')
   .option('-q, --quiet', 'Quiet mode only shows results')
   .option('-v, --verbose', 'Verbose mode says what is happening')
   .option('-d, --debug', 'Debug mode keeps run information in output')
@@ -16,8 +15,10 @@ program
   .option('-r, --runs [int]', 'How many runs to perform', '10')
   .parse(process.argv)
 
-var arg = program.commands[0].args[0]
-var file = arg ? process.cwd() + "/" + arg : process.cwd() + "/benchmark.json"
+var file = program.benchfile
+var currentDir = process.cwd()
+
+file = file ? currentDir + "/" + file : currentDir + "/benchmark.json"
 
 if (program.output === true) {
   console.log("Output file must be specified!")
