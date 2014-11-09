@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 var fs = require('fs')
 var program = require('commander')
+var aoot = require('aoot')
 var benchmarker = require('./index.js')
 
 var options = {}
@@ -11,6 +12,7 @@ program
   .option('-v, --verbose', 'Verbose mode says what is happening')
   .option('-d, --debug', 'Debug mode keeps run information in output')
   .option('-s, --sort', 'Sort mode sorts results by fastest total time')
+  .option('-f, --format [json|csv|xml]', 'Specify the output format', 'json')
   .option('-o, --output [file]', 'Save results to output file')
   .option('-r, --runs [int]', 'How many runs to perform', '10')
   .parse(process.argv)
@@ -39,6 +41,7 @@ options.verbose = program.verbose || false
 options.debug = program.debug || false
 options.sort = program.sort || false
 options.runs = program.runs || 10
+options.format = program.format || 'json'
 
 if (options.verbose) {
   console.log("Benchmarking with the following options")
@@ -48,15 +51,25 @@ if (options.verbose) {
 
 benchmarker(file, options, function(results){
 
-  var resultJSON = JSON.stringify(results,null,2)
+  var format = options.format.toLowerCase()
+
+  if (format == 'csv') {
+    var output = aoot.csv(results)
+  } else if (format == 'tsv') {
+    var output = aoot.tsv(results)
+  } else if (format == 'xml') {
+    var output = aoot.xml(results)
+  } else {
+    var output = JSON.stringify(results,null,2)
+  }
 
   if (program.output) {
-    fs.writeFile(program.output, resultJSON, function (err) {
+    fs.writeFile(program.output, output, function (err) {
       if (err) throw err;
       console.log('Results saved to ' + program.output);
     })
   } else {
-    console.log(resultJSON)
+    console.log(output)
   }
 
 })
