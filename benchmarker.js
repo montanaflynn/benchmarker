@@ -67,6 +67,8 @@ module.exports = function(files, options) {
         var command = item.execute
         execute(command, function(code, output, time){
 
+          console.log(output)
+
           // Wha happen?
           var outcome = code ? "error" : "success"
 
@@ -81,9 +83,12 @@ module.exports = function(files, options) {
           item.runs.push({
             time: time,
             code: code,
-            output: output,
-            outputlines: (output.split("\n").length - 1),
-            outputlength: output.length
+            stdout: output.stdout,
+            stdoutLines: (output.stdout.split("\n").length - 1),
+            stdoutLength: output.stdout.length,
+            stderr: output.stderr,
+            stderrLines: (output.stderr.split("\n").length - 1),
+            stderrLength: output.stderr.length
           })
 
           // Update progress bar
@@ -111,7 +116,13 @@ module.exports = function(files, options) {
     ls.stdout.on('data', function (data) {
       stdout += data
     })
-     
+
+    // Get all stderr
+    var stderr = ""
+    ls.stderr.on('data', function (data) {
+      stderr += data
+    })
+
     // process is done
     ls.on('exit', function (code) {
 
@@ -120,8 +131,14 @@ module.exports = function(files, options) {
       var processingTime = diff[0] * 1e9 + diff[1]
       processingTime = Math.ceil(processingTime / 1000000)
 
+      // Collected for debug mode
+      var output = {
+        stdout: stdout,
+        stderr: stderr
+      }
+
       // Send the metrics back to our runner
-      callback(code, stdout, processingTime)
+      callback(code, output, processingTime)
     })
   }
 
@@ -189,9 +206,6 @@ module.exports = function(files, options) {
         "10th" : percentile(runs, .10),
       }
 
-      if (!options.debug)
-        delete name.runs
-
     }
 
     output(data)
@@ -226,10 +240,16 @@ module.exports = function(files, options) {
     var arr = [];
 
     for (var item in data) {
-      arr.push({
+      var obj = {
         name: item,
         results: data[item].results
-      })
+      }
+
+      if (options.debug) {
+        obj["runs"] = data[item].runs
+      }
+
+      arr.push(obj)
     }
 
     if (options.sort) {
