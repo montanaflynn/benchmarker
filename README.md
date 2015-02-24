@@ -38,16 +38,11 @@ benchmarker --quiet | jq '[.[] | {name: .name, total: .results.total}]'
 ## Readme Driven Development
 ### Thar be dragons below; things may not work or be accurate.
 
-Create a `benchmark.json` file with an array of objects representing the software you want to benchmark. Each object must have a name and path with an optional command. You can also send options in an options object.
+Create a json `Benchfile` that has a `benchmark` property with an array of objects representing the software you want to benchmark. Each object must have a `name` and `path` property and may contain an optional `command`. You can also send options in an `options` object.
 
 ```json
 {
-    "options": {
-        "verbose": false,
-        "debug": false,
-        "runs": 5
-    },
-    "software": [
+    "benchmark": [
         {
             "name": "Node MD5",
             "path": "./md5.js",
@@ -62,7 +57,12 @@ Create a `benchmark.json` file with an array of objects representing the softwar
             "name": "GO MD5",
             "path": "./gomd5"
         }
-    ]
+    ], 
+    "options": {
+        "verbose": false,
+        "debug": false,
+        "runs": 5
+    }
 }
 ```
 
@@ -115,4 +115,4 @@ For now output is JSON of this structure:
 
 ### Todos
 
-I'd like to see charts, outliers, sorting, csv, plugins, etc...
+- I'd like to see charts, outliers, sorting, csv, plugins, etc...
